@@ -1,0 +1,138 @@
+:root{
+	--little-font: 10px;
+	--little2-font: 12px;
+	--normal-font: 20px;
+	--big-font: 26px;
+}
+
+body{
+	background-color: #222222;
+	color: white;
+}
+
+legend {
+	font-size:var(--little-font);
+	align:bottom;
+	text-transform:uppercase;
+}
+
+fieldset {
+	min-width:6em;
+}
+
+table {
+	width:100%; 
+}
+
+th {
+	text-transform:uppercase;
+	text-align:center;
+}
+
+td {
+	text-align:center;
+	font-size: var(--normal-font);
+}
+
+.border-normal{
+	border:solid white 1px;
+}
+
+.border-ligth{
+	border:solid white 1px;
+	background-color:#555555;
+}
+
+.border-bold {
+	border:solid white 1px;
+	background-color:#000000;
+}
+
+.contenedor {
+	margin-top: 1em;
+}
+
+.bold {
+	font-weight:bold;
+}
+
+.little {
+	font-size: var(--little-font);
+}
+
+.medium {
+	font-size: var(--little2-font);
+}
+
+.big {
+	font-size: var(--big-font);
+	text-transform:uppercase;
+}
+
+.texto {
+	font-size:var(--normal-font);
+}
+.flex {
+	display:flex;
+}
+
+.right {
+	float:right;
+}
+
+.left {
+	float:left;
+}
+
+.w-80{
+	width:80%;
+}
+
+.w-70{
+	width:70%;
+}
+.w-60{
+	width:60%;
+}
+
+.w-50 {
+	width:50%;
+}
+.w-40 {
+	width:40%;
+}
+.w-30 {
+	width:30%;
+}
+
+.w-25 {
+	width:25%;
+}
+.w-20 {
+	width:20%;
+}
+.w-15 {
+	width:15%;
+}
+.w-10 {
+	width:10%;
+}
+
+@media only screen and (max-width: 768px) {
+	[class*="w-"] {
+		width: 100%;
+	}
+	.flex {
+		display:block;
+		padding-right:2em;
+	}
+	table {
+		margin:auto;
+	}
+	.left{
+		float:none;
+	}
+	.right{
+		float:none;
+	}
+}
