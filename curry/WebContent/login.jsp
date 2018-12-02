@@ -21,7 +21,7 @@
 	</head>
 	<body>
 		<div class="container">
-			<h2>Bienvenido a D&D 3.5 Güeabapp</h2>
+			<h2>Bienvenido a D&D 3.5 Güebapp</h2>
 			<form method="post" action="login">
 				<div class="form-group">
 					<label for="<%=Forms.USERNAME%>">Usuario:</label>

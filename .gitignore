@@ -8,5 +8,5 @@ Servers/
 # Maven
 log/
 target/
-/.metadata/
-/.recommenders/
+.metadata/
+.recommenders/

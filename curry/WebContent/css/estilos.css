@@ -21,7 +21,7 @@ fieldset {
 }
 
 table {
-	width:100%; 
+	width:100%;
 }
 
 th {
@@ -29,9 +29,35 @@ th {
 	text-align:center;
 }
 
+table td {
+    position: relative;
+    text-align: center;
+    border: 1px solid #000;
+}
 td {
 	text-align:center;
 	font-size: var(--normal-font);
+}
+
+.igual::before{
+	font-weight:bold;
+    position: absolute;
+    width: 10px;
+    left: -4px;
+    text-align: center;
+    content: " = ";
+}
+.mas::before{
+	font-weight:bold;
+    position: absolute;
+    width: 10px;
+    left: -10px;
+    text-align: center;
+    content: " + ";
+}
+
+.border-none {
+	border:none;
 }
 
 .border-normal{
@@ -46,6 +72,16 @@ td {
 .border-bold {
 	border:solid white 1px;
 	background-color:#000000;
+}
+
+.border-top-normal{
+	border:none;
+	border-top:solid white 1px;
+}
+
+.border-bottom-normal{
+	border:none;
+	border-bottom:solid white 1px;
 }
 
 .contenedor {
