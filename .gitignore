@@ -3,7 +3,10 @@
 .project
 .settings/
 build/
+Servers/
 
 # Maven
 log/
 target/
+/.metadata/
+/.recommenders/

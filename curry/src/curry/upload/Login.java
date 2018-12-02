@@ -8,9 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import curry.accesoBD.CurryUsuariosDB;
-import curry.constants.Formularios;
-import curry.constants.Sesion;
+import curry.constants.RequestKeys.Forms;
+import curry.constants.Session;
 import curry.constants.Url;
 
 /**
@@ -25,7 +24,6 @@ public class Login extends HttpServlet {
      */
     public Login() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
@@ -33,15 +31,16 @@ public class Login extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String usuario = request.getParameter(Formularios.USER_FIELD);
-		String password = request.getParameter(Formularios.PASSWORD_FIELD);
+		String usuario = request.getParameter(Forms.USERNAME);
+		String password = request.getParameter(Forms.PASSWORD);
 		
-		CurryUsuariosDB db = new CurryUsuariosDB();
+		//TODO check if the user can login into the server
+		boolean correctLogin = true;
 		
-		if(db.iniciarSesion(usuario, password)) {
+		if(correctLogin) {
 			HttpSession sesion = request.getSession(true);
-			sesion.setAttribute(Sesion.SESSION_USER, usuario);
-			response.sendRedirect(Url.UPLOADER);
+			sesion.setAttribute(Session.SESSION_USER, usuario);
+			response.sendRedirect(Url.MENU);
 		}
 		else {
 			response.sendRedirect(Url.LOGIN_ERROR);
