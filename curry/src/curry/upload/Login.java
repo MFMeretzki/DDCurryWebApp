@@ -1,6 +1,7 @@
 package curry.upload;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -8,9 +9,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import curry.constants.RequestKeys.Forms;
-import curry.constants.Session;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+
 import curry.constants.Url;
+import curry.constants.RequestKeys.Forms;
+import curry.core.HibernateUtil;
+import curry.core.PasswordUtil;
+import curry.model.User;
 
 /**
  * Servlet implementation class Login
@@ -31,21 +37,42 @@ public class Login extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String usuario = request.getParameter(Forms.USERNAME);
+		String userName = request.getParameter(Forms.USERNAME);
 		String password = request.getParameter(Forms.PASSWORD);
 		
-		//TODO check if the user can login into the server
-		boolean correctLogin = true;
+		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+		Session session = (Session) sessionFactory.openSession();
 		
-		if(correctLogin) {
-			HttpSession sesion = request.getSession(true);
-			sesion.setAttribute(Session.SESSION_USER, usuario);
+		User existingUser = null;
+		
+		try {
+			existingUser = session.createQuery(
+					"select u " +
+					"from User u " +
+					"where u.nickName = :NickName " +
+					"and u.password = :Password",
+					User.class)
+				.setParameter( "NickName", userName )
+				.setParameter( "Password", PasswordUtil.generateSecurePassword(password) )
+				.uniqueResult();
+			
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+			existingUser = null;
+		}
+		finally {
+			session.close();
+		}
+		
+		if (existingUser != null) {
+			HttpSession httpSession = request.getSession(true);
+			httpSession.setAttribute(curry.constants.UserSession.USER, userName);
 			response.sendRedirect(Url.MENU);
 		}
 		else {
 			response.sendRedirect(Url.LOGIN_ERROR);
 		}
-		
 	}
 
 }

@@ -2,7 +2,7 @@
     pageEncoding="ISO-8859-1"%>
 <%@include file="/WEB-INF/constants.jspf" %>	
 <%
-		String user = (String) session.getAttribute(Session.SESSION_USER);
+		String user = (String) session.getAttribute(UserSession.USER);
 		if(user != null && !user.equals("") && !user.isEmpty())
 			 response.sendRedirect(Url.MENU);
 		else

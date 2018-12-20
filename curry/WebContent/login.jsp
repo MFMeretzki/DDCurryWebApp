@@ -1,13 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@include file="/WEB-INF/constants.jspf" %>
 <%
-	String user = (String) session.getAttribute(Session.SESSION_USER);
+	String user = (String) session.getAttribute(UserSession.USER);
 	if(user != null && !user.equals("") && !user.isEmpty())
 		 response.sendRedirect(Url.MENU);
 	
 	//Check if there was a failure during the login
 	boolean loginFailed = request.getParameter("") == "";
-		
 %>
 <!DOCTYPE html>
 <html>
@@ -20,6 +19,7 @@
 		<title>Insert title here</title>
 	</head>
 	<body>
+		<jsp:include page="/WEB-INF/header.jsp" />
 		<div class="container">
 			<h2>Bienvenido a D&D 3.5 Güebapp</h2>
 			<form method="post" action="login">

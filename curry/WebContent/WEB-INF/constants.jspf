@@ -1,4 +1,4 @@
 <!-- JSPF that imports the constant classses to use into a JSP  -->
-<%@ page import="curry.constants.RequestKeys.Forms" %>
-<%@ page import="curry.constants.Session" %>
+<%@ page import="curry.constants.RequestKeys.*" %>
+<%@ page import="curry.constants.UserSession" %>
 <%@ page import="curry.constants.Url" %>
